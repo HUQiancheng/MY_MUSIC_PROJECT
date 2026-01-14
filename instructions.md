@@ -7,3 +7,7 @@ I dream to be producer like Ahpex Twin, Autechre, Squarpusher... I have no idea,
 so, here we are. with Plugdata, we can finally have something on our own, and based the enormous data trained by LLMs
 
 I can finally approach my dream one step forward...
+
+WE BUILD FROM SCRATCH, WE NEED PATIENCE AND EFFORT.
+
+NOW LET'S WELCOME OUR GREAT INTELLIGENT AGENT, THE CLAUDE, OUR LEGEND ANDROID.

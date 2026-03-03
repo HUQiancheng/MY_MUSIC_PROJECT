@@ -1,0 +1,7 @@
+# Output renders (demos/stems/masters)
+exports/
+
+# Scratch / temporary files
+tmp
+tmp/
+

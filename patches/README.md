@@ -24,3 +24,7 @@ Each patch should:
 1. Include abstractions from `/abstractions` folder
 2. Document inputs/outputs with comments
 3. Save presets for interesting parameter combinations
+
+For track-specific modular trees, scaffold from scripts:
+
+`node scripts/idm/scaffold-patch-tree.js --name "track-name"`

@@ -1,0 +1,4 @@
+#N canvas 120 120 1080 720 10;
+#X text 36 36 fractured-meridian conductor;
+#X text 36 64 Controls section timeline and module call-response.;
+#X text 36 92 TODO: wire abstractions and role I/O here.;

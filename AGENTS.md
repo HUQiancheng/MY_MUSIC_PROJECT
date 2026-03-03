@@ -1,36 +1,40 @@
 # Repository Guidelines
 
-This repository is a Plugdata (Pure Data) project for IDM-focused sound design and composition on Ubuntu (no Max/MSP). Keep changes modular, documented, and easy to reuse across patches and abstractions.
+## Canonical Documentation
 
-## Project Structure & Module Organization
-- `patches/` is the main workspace, split into `synthesis/`, `effects/`, `sequencing/`, `composition/`, and `experiments/`.
-- `abstractions/` holds reusable building blocks (`synth/`, `fx/`, `rhythm/`, `utilities/`).
-- `samples/` stores source audio; `exports/` stores rendered demos, stems, and masters.
-- `docs/` captures techniques and notes; `scripts/` contains automation helpers.
+- `README.md` is the single source of truth for onboarding, structure, workflow, naming, and commands.
+- Do not reintroduce split docs (`GETTING_STARTED.md`, `instructions.md`, `PROJECT_STRUCTURE.md`).
 
-## Technology & Libraries
-- Primary environment: Plugdata (Pure Data fork).
-- Built-in libraries: ELSE and cyclone (useful for IDM techniques and Max/MSP compatibility).
-- Audio routing: PulseAudio or JACK on Ubuntu as needed.
+## Project Context
 
-## Build, Test, and Development Commands
-There is no build system. Work is driven by Plugdata:
-- `plugdata` launches the UI.
-- `plugdata patches/experiments/exp-my-idea.pd` opens a specific patch.
-- `aplay -l` or `pactl list` lists audio devices; `speaker-test -c 2` validates output.
-- `jack_simple_client` can verify JACK if you use low-latency routing.
-- `htop` or `top` helps monitor CPU when patches are heavy.
+- Ubuntu-based IDM production project.
+- Primary environment: Plugdata (Pure Data fork), no Max/MSP dependency.
+- Keep all work modular and reusable across patches/abstractions/scripts.
 
-## Coding Style & Naming Conventions
-- Patch files: `syn-...`, `fx-...`, `seq-...`, `comp-...`, `exp-...` (e.g., `syn-fm-bell.pd`, `comp-track01.pd`).
-- Abstractions: two-letter prefixes (`sy-`, `fx-`, `rh-`, `ut-`) (e.g., `fx-bitcrush.pd`).
-- Samples: lowercase, hyphenated, descriptive (e.g., `kick-808-punchy.wav`), preferably WAV/AIFF at 44.1kHz or 48kHz.
-- Use `[declare -path ../abstractions/<subfolder>]` or add `/abstractions` to Plugdata paths for portability.
-- Document patch I/O with comment objects; use `$1`, `$2`, etc. for abstraction arguments.
+## Working Rules
 
-## Testing Guidelines
-Automated tests are not defined. Validate changes by opening patches in Plugdata, enabling DSP, and listening for expected behavior. For CPU-heavy patches, check that playback remains stable without dropouts.
+- Respect structure in `README.md`:
+  - `patches/` for production patches
+  - `abstractions/` for reusable components
+  - `samples/` for source material
+  - `scripts/` for automation/render/scaffolding
+  - `exports/` for generated audio outputs (ignored by git)
+- Prefer role-based, composable patch design over monolithic patches.
+- Document non-obvious patch I/O and abstraction arguments.
 
-## Commit & Pull Request Guidelines
-- Commit messages are short, all-caps, and end with a period (e.g., `ADD GRANULAR DELAY ABSTRACTION.`).
-- PRs should describe intent, list affected patches/abstractions, and include screenshots or audio renders when the change impacts sound or UI. Place renders in `exports/demos/` when applicable.
+## Naming
+
+- Patches: `syn-*`, `fx-*`, `seq-*`, `comp-*`, `exp-*`
+- Abstractions: `sy-*`, `fx-*`, `rh-*`, `ut-*`
+- Samples: lowercase, hyphenated, descriptive
+
+## Validation
+
+- Patch/audio validation is manual in Plugdata.
+- For JS renderer changes, run `node --test tests/*.test.js` where applicable.
+
+## Git Hygiene
+
+- Never commit generated renders from `exports/`.
+- Keep `.gitignore` strict for generated/temp/editor files.
+- Use `.gitkeep` only when a tracked empty directory is truly necessary.

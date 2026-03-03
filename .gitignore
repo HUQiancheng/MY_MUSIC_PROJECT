@@ -4,4 +4,22 @@ exports/
 # Scratch / temporary files
 tmp
 tmp/
+*.tmp
+*.log
 
+# Pure Data / editor backups
+*.pd~
+*~
+*.swp
+*.swo
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Dependency caches
+node_modules/
+
+# Intermediate print/bounce artifacts inside patch trees
+patches/**/prints/*
+!patches/**/prints/README.md
